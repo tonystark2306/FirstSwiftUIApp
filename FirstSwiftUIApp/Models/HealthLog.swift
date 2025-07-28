@@ -2,7 +2,7 @@
 //  HealthLog.swift
 //  FirstSwiftUIApp
 //
-//  Created by iKame Elite Fresher 2025 on 7/28/25.
+//  Created by iKame Elite Fresher 2025 on 7/25/25.
 //
 
 import SwiftUI
@@ -25,7 +25,7 @@ struct HealthLog: Identifiable {
     
     var statusColor: Color {
         switch status {
-        case "Good": return .good
+        case "Good": return .accentNormal
         case "Low": return .low
         case "Warning": return .warning
         default: return .gray

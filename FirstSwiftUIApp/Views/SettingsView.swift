@@ -1,3 +1,10 @@
+//
+//  SettingsView.swift
+//  FirstSwiftUIApp
+//
+//  Created by iKame Elite Fresher 2025 on 7/20/25.
+//
+
 import SwiftUI
 
 struct SettingsItem {
@@ -32,7 +39,6 @@ struct SettingsView: View {
                     .foregroundColor(.neutral1)
                     .padding(.horizontal, 16)
                     .padding(.top, 10)
-                    //.frame(maxWidth: .infinity, alignment: .leading)
                 
                 VStack(spacing: 16) {
                     PremiumMembershipView()
@@ -49,7 +55,7 @@ struct SettingsView: View {
                 .padding(.bottom, 20)
             }
         }
-        .background(Color("Background"))
+        .background(Color.background)
         .navigationBarHidden(true)
     }
     

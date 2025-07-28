@@ -34,11 +34,11 @@ struct SecondOnboardingView: View {
     
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea(edges: .all)
+            Color.onboardBg.ignoresSafeArea(edges: .all)
             VStack (spacing: 24) {
                 Text("Which heart health issue concerns you the most?")
                     .font(.system(size: 26, weight: .bold, design: .default))
-                    .foregroundColor(.neutral1)
+                    .foregroundColor(.neutral11)
                     .padding(.top, 36)
                     .padding(.leading, 32)
                     .padding(.trailing, 32)

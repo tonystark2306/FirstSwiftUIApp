@@ -1,5 +1,5 @@
 //
-//  SecondOnboardingView.swift
+//  ThirdOnboardingView.swift
 //  FirstSwiftUIApp
 //
 //  Created by iKame Elite Fresher 2025 on 7/21/25.
@@ -34,11 +34,11 @@ struct ThirdOnboardingView: View {
     
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea(edges: .all)
+            Color.onboardBg.ignoresSafeArea(edges: .all)
             VStack (spacing: 24) {
                 Text("What would you like to achieve?")
                     .font(.system(size: 26, weight: .bold, design: .default))
-                    .foregroundColor(.neutral1)
+                    .foregroundColor(.neutral11)
                     .padding(.top, 36)
                     .padding(.leading, 32)
                     .padding(.trailing, 32)
