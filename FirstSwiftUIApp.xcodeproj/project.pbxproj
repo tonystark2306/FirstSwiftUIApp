@@ -35,16 +35,6 @@
 			path = FirstSwiftUIApp;
 			sourceTree = "<group>";
 		};
-		2CC9DA4E2E1CB2CE003B611E /* FirstSwiftUIAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FirstSwiftUIAppTests;
-			sourceTree = "<group>";
-		};
-		2CC9DA582E1CB2CE003B611E /* FirstSwiftUIAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FirstSwiftUIAppUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				2CC9DA402E1CB2CC003B611E /* FirstSwiftUIApp */,
-				2CC9DA4E2E1CB2CE003B611E /* FirstSwiftUIAppTests */,
-				2CC9DA582E1CB2CE003B611E /* FirstSwiftUIAppUITests */,
 				2CC9DA3F2E1CB2CC003B611E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				2CC9DA4D2E1CB2CE003B611E /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				2CC9DA4E2E1CB2CE003B611E /* FirstSwiftUIAppTests */,
-			);
 			name = FirstSwiftUIAppTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				2CC9DA572E1CB2CE003B611E /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				2CC9DA582E1CB2CE003B611E /* FirstSwiftUIAppUITests */,
 			);
 			name = FirstSwiftUIAppUITests;
 			packageProductDependencies = (
@@ -400,8 +382,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,8 +410,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

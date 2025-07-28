@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "_x30_1_x2C__stress_test_x2C__trigger_x2C__testing_x2C__computer_x2C__speedometer_x2C__meter.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "_x30_1_x2C__stress_test_x2C__trigger_x2C__testing_x2C__computer_x2C__speedometer_x2C__meter@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "_x30_1_x2C__stress_test_x2C__trigger_x2C__testing_x2C__computer_x2C__speedometer_x2C__meter@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

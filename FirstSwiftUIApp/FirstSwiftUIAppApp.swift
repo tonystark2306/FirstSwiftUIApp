@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct FirstSwiftUIAppApp: App {
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            EmptyProfileListView()
+            if hasSeenOnboarding {
+                MainTabBar()
+            }
+            else {
+                NavigationStack {
+                    FirstOnboardingVC()
+                }
+            }
         }
     }
 }
