@@ -16,7 +16,9 @@ struct MainTabBar: View {
                 case 0:
                     ReportView(data: logData)
                 case 1:
-                    SettingsView()
+                    NavigationView {
+                        SettingsView()
+                    }
                 default:
                     ReportView(data: logData)
                 }

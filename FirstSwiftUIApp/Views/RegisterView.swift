@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State private var firstName = ""
-    @State var lastName: String = ""
-    @State private var selectedGender = 0
-    @State var weight = ""
-    @State var height = ""
+    @ObservedObject var userProfile: UserProfileModel
     @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        
         NavigationView {
             VStack {
                 HStack (spacing: 12) {
@@ -23,7 +19,7 @@ struct RegisterView: View {
                         Text("First name")
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.neutral15)
-                        TextField("Enter first name...", text: $firstName)
+                        TextField("Enter first name...", text: $userProfile.firstName)
                             .textFieldStyle(CustomTextFieldStyle())
                     }
                     
@@ -31,7 +27,7 @@ struct RegisterView: View {
                         Text("Last name")
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.neutral15)
-                        TextField("Enter last name...", text: $lastName)
+                        TextField("Enter last name...", text: $userProfile.lastName)
                             .textFieldStyle(CustomTextFieldStyle())
                     }
                 }
@@ -46,14 +42,13 @@ struct RegisterView: View {
                         Spacer()
                     }
                     
-                    Picker("Gender", selection: $selectedGender) {
+                    Picker("Gender", selection: $userProfile.selectedGender) {
                         Text("Male").tag(0)
                         Text("Female").tag(1)
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(height: 32)
                 }
-                
                 .padding(.top, 21)
                 .padding(.horizontal, 16)
                 
@@ -62,20 +57,24 @@ struct RegisterView: View {
                         Text("Weight")
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.neutral15)
-                        TextField("Enter weight...", text: $weight)
+                        TextField("Enter weight...", text: $userProfile.weight)
                             .textFieldStyle(CustomTextFieldStyle())
+                            .keyboardType(.decimalPad)
                     }
                     
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Height")
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.neutral15)
-                        TextField("Enter height...", text: $height)
+                        TextField("Enter height...", text: $userProfile.height)
                             .textFieldStyle(CustomTextFieldStyle())
+                            .keyboardType(.decimalPad)
                     }
                 }
                 .padding(.top, 21)
                 .padding(.horizontal, 16)
+                
+                
                 Spacer()
                 
                 Button(action: {
@@ -86,9 +85,10 @@ struct RegisterView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 56)
-                        .background(Color.primary1)
+                        .background(userProfile.enabledUpdate ? Color.primary1 : Color.neutral3)
                         .cornerRadius(16)
                 }
+                .disabled(!userProfile.enabledUpdate)
                 .padding(16)
             }
             .background(Color.background)
@@ -96,7 +96,9 @@ struct RegisterView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {}) {
+                    Button(action: {
+                        dismiss()
+                    }) {
                         Image("backButton")
                             .font(.system(size: 12, weight: .bold))
                             .frame(width: 24, height: 24)
@@ -124,5 +126,5 @@ struct CustomTextFieldStyle: TextFieldStyle {
 }
 
 #Preview {
-    RegisterView()
+    RegisterView(userProfile: UserProfileModel())
 }

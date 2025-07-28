@@ -14,6 +14,10 @@ struct SettingsItem {
 }
 
 struct SettingsView: View {
+    @StateObject private var userProfile = UserProfileModel()
+    @State private var showingProfile = false
+    @State private var showingRegister = false
+    
     let settingsData: [[SettingsItem]] = [
         [
             SettingsItem(title: "Profile", icon: "profile")
@@ -57,12 +61,22 @@ struct SettingsView: View {
         }
         .background(Color.background)
         .navigationBarHidden(true)
+        .sheet(isPresented: $showingProfile) {
+            ProfileView(userProfile: userProfile, showingRegister: $showingRegister)
+        }
+        .sheet(isPresented: $showingRegister) {
+            RegisterView(userProfile: userProfile)
+        }
     }
     
     private func onTapped(_ title: String) {
         switch title {
         case "Profile":
-            print("Navigate to Profile")
+            if userProfile.hasCompleteProfile {
+                showingProfile = true
+            } else {
+                showingRegister = true
+            }
         default:
             break
         }
@@ -102,72 +116,13 @@ struct SettingSectionView: View {
                     lastCell: lastCell,
                     onlyCell: onlyCell,
                     showSeparator: !lastCell && !onlyCell,
-                    onTapped: { onItemTapped(item.title) }
+                    onTapped: {
+                        onItemTapped(item.title)
+                    }
                 )
             }
         }
         .padding(.horizontal, 16)
-    }
-}
-
-struct SettingCell: View {
-    let item: SettingsItem
-    let firstCell: Bool
-    let lastCell: Bool
-    let onlyCell: Bool
-    let showSeparator: Bool
-    let onTapped: () -> Void
-    
-    @State private var isPressed = false
-    
-    var cornerRadius: CGFloat = 12 
-    
-    var body: some View {
-        Button(action: onTapped) {
-            VStack(spacing: 0) {
-                HStack {
-                    Image(item.icon)
-                        .frame(width: 20, height: 20)
-                        .padding(.trailing, 8)
-                    
-                    Text(item.title)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(Color("neutral1"))
-                    
-                    Spacer()
-                    
-                    Image("settingChevron")
-                        .foregroundColor(.red)
-                        .font(.system(size: 14, weight: .medium))
-                        .frame(width: 24, height: 24)
-                }
-                .padding(.horizontal)
-                .frame(height: 52)
-                .background(isPressed ? Color(.systemGray6) : Color.white)
-                
-                if showSeparator {
-                    HStack {
-                        Color.clear
-                            .frame(width: 45)
-                        
-                        Rectangle()
-                            .fill(Color(.accentLine))
-                            .frame(height: 1)
-                    }
-                    .background(Color.white)
-                    .padding(.trailing, 16)
-                }
-            }
-        }
-        .background(Color.white)
-        .cornerRadius(onlyCell ? cornerRadius : (firstCell ? cornerRadius : 0), corners: onlyCell ? .allCorners : (firstCell ? [.topLeft, .topRight] : []))
-        .cornerRadius(onlyCell ? 0 : (lastCell ? cornerRadius : 0), corners: onlyCell ? [] : (lastCell ? [.bottomLeft, .bottomRight] : []))
-    }
-}
-
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
     }
 }
 

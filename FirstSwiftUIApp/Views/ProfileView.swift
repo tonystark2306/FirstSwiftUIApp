@@ -7,13 +7,9 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State private var firstName = "Mei Channnnn"
-    @State private var lastName = ""
-    @State private var weight = "48"
-    @State private var height = "162"
-    @State private var age = "25"
-    @State private var gender = "Female"
-    @State private var bmi = "18.8"
+    @ObservedObject var userProfile: UserProfileModel
+    @Binding var showingRegister: Bool
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
@@ -28,7 +24,7 @@ struct ProfileView: View {
                             .foregroundColor(.white)
                     }
                     
-                    Text(firstName)
+                    Text(userProfile.firstName + " " + userProfile.lastName)
                         .font(.system(size: 36, weight: .semibold))
                         .foregroundColor(Color.neutral15)
                 }
@@ -40,7 +36,7 @@ struct ProfileView: View {
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(.neutral1)
                         
-                        Text(bmi)
+                        Text(userProfile.bmi)
                             .font(.system(size: 64, weight: .bold))
                             .foregroundColor(Color.good)
                     }
@@ -53,10 +49,10 @@ struct ProfileView: View {
                         .padding(.horizontal, 16)
                     
                     HStack(spacing: -8) {
-                        StatView(value: "\(weight) kg", title: "Weight")
-                        StatView(value: "\(height) cm", title: "Height")
-                        StatView(value: age, title: "Age")
-                        StatView(value: gender, title: "Gender")
+                        StatView(value: "\(userProfile.weight) kg", title: "Weight")
+                        StatView(value: "\(userProfile.height) cm", title: "Height")
+                        StatView(value: "25", title: "Age")
+                        StatView(value: userProfile.gender, title: "Gender")
                     }
                 }
                 .background(Color.white)
@@ -71,7 +67,10 @@ struct ProfileView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {}) {
+                    Button(action: {
+                        dismiss()
+                        showingRegister = true
+                    }) {
                         Text("Edit")
                             .foregroundColor(Color("primary2"))
                             .font(.system(size: 16, weight: .semibold))
@@ -80,7 +79,9 @@ struct ProfileView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {}) {
+                    Button(action: {
+                        dismiss()
+                    }) {
                         Image("backButton")
                             .font(.system(size: 12, weight: .bold))
                             .frame(width: 24, height: 24)
@@ -113,5 +114,5 @@ struct StatView: View {
 }
  
 #Preview {
-    ProfileView()
+    ProfileView(userProfile: UserProfileModel(), showingRegister: .constant(false))
 }
