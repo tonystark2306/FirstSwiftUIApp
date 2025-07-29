@@ -44,6 +44,7 @@ struct SecondOnboardingView: View {
                     .padding(.trailing, 32)
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
+                    
                 
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(0..<items.count, id: \.self) { index in

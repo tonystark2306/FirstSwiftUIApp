@@ -11,6 +11,7 @@ struct MainTabBar: View {
     @StateObject private var logData = HealthLogManager()
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 14)], for: .normal)
     }
     
     var body: some View {
@@ -38,7 +39,7 @@ struct MainTabBar: View {
         .onAppear {
             UITabBar.appearance().unselectedItemTintColor = UIColor(Color.neutral4)
         }
-        
+    
     }
 }
 

@@ -61,7 +61,6 @@ struct SettingsView: View {
                 }
             }
             .background(Color.background)
-            
             .navigationDestination(isPresented: $goToProfile) {
                 ProfileView(userProfile: userProfile, goToRegister: $goToRegister)
             }

@@ -18,7 +18,7 @@ struct ReportView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Text("Health Guru")
                     .font(.system(size: 32, weight: .semibold))
-                    .foregroundStyle(.neutral1)
+                    .foregroundStyle(.neutral111)
                     .padding(.top, 16)
                     .padding(.leading, 16)
                     .padding(.bottom, 48)
@@ -42,13 +42,14 @@ struct ReportView: View {
                     VStack(spacing: 8) {
                         EmptyCell()
                         
-                        VStack (alignment: .leading) {
-                            HStack (alignment: .center) {
+                        VStack (alignment: .leading, spacing: 0) {
+                            HStack (alignment: .top, spacing: 0) {
                                 Image("smallHeart")
                                     .foregroundColor(.red)
                                 Text("Track daily")
                                     .font(.system(size: 16, weight: .semibold))
-                                    .padding(.vertical, 4)
+                                    .padding(.vertical, 2)
+                                    .foregroundStyle(.neutral7)
                                 Spacer()
                             }
                             .padding(.horizontal)
@@ -57,7 +58,7 @@ struct ReportView: View {
                                 .foregroundColor(.neutral22)
                                 .padding(.horizontal)
                         }
-                        .padding(.vertical, 12)
+                        .padding(.vertical, 16)
                         .background(Color.white)
                         .cornerRadius(16)
                         .padding()

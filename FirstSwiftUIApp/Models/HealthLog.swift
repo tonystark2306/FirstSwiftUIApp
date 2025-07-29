@@ -25,10 +25,10 @@ struct HealthLog: Identifiable {
     
     var statusColor: Color {
         switch status {
-        case "Good": return .accentNormal
-        case "Low": return .low
-        case "Warning": return .warning
-        default: return .gray
+            case "Good": return .accentNormal
+            case "Low": return .low
+            case "Warning": return .warning
+            default: return .gray
         }
     }
 }

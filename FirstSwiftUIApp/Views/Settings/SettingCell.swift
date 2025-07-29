@@ -39,8 +39,6 @@ struct SettingCell: View {
                 }
                 .padding(.horizontal)
                 .frame(height: 52)
-                .background(isPressed ? Color(.systemGray6) : Color.white)
-                
                 if showSeparator {
                     HStack {
                         Color.clear
