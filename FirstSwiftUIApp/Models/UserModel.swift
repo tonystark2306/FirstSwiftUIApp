@@ -24,8 +24,8 @@ class UserProfileModel: ObservableObject {
               weightValue > 0, heightValue > 0 else {
             return "0.0"
         }
-        let heightInMeters = heightValue / 100
-        let bmiValue = weightValue / (heightInMeters * heightInMeters)
+        let heightConv = heightValue / 100
+        let bmiValue = weightValue / (heightConv * heightConv)
         return String(format: "%.1f", bmiValue)
     }
     

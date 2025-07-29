@@ -55,9 +55,6 @@ struct EmptyCell: View {
                             Text("--")
                                 .font(.system(size: 18, weight: .bold))
                                 .foregroundColor(.neutral22)
-                            Text("bpm")
-                                .font(.system(size: 16, weight: .medium))
-                                .foregroundColor(.neutral22)
                         }
                         
                     }

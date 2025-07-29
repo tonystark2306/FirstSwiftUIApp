@@ -17,7 +17,7 @@ struct LogCell: View {
                 .padding(.trailing, 8)
             
             VStack(alignment: .leading, spacing: 4) {
-                HStack (spacing: 24) {
+                HStack (spacing: 12) {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Pulse")
                             .font(.system(size: 14, weight: .medium))
@@ -31,6 +31,7 @@ struct LogCell: View {
                                 .foregroundColor(entry.statusColor)
                         }
                     }
+                    .frame(width: 80, height: 50, alignment: .leading)
                     VStack(alignment: .leading, spacing: 12) {
                         Text("HRV")
                             .font(.system(size: 14, weight: .medium))
@@ -44,6 +45,7 @@ struct LogCell: View {
                                 .foregroundColor(entry.statusColor)
                         }
                     }
+                    .frame(width: 80, height: 50, alignment: .leading)
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Status")
                             .font(.system(size: 14, weight: .medium))
@@ -54,7 +56,7 @@ struct LogCell: View {
                             .foregroundColor(entry.statusColor)
                         
                     }
-                    
+                    .frame(width: 80, height: 50, alignment: .leading)
                 }
             }
             Spacer()
