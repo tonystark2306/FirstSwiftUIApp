@@ -15,8 +15,8 @@ struct SettingsItem {
 
 struct SettingsView: View {
     @StateObject private var userProfile = UserProfileModel()
-    @State private var showingProfile = false
-    @State private var showingRegister = false
+    @State private var goToProfile = false
+    @State private var goToRegister = false
     
     let settingsData: [[SettingsItem]] = [
         [
@@ -36,46 +36,49 @@ struct SettingsView: View {
     ]
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("Settings")
-                    .font(.system(size: 32, weight: .semibold))
-                    .foregroundColor(.neutral1)
-                    .padding(.horizontal, 16)
-                    .padding(.top, 10)
-                
-                VStack(spacing: 16) {
-                    PremiumMembershipView()
-                    ForEach(0..<settingsData.count, id: \.self) { sectionIndex in
-                        SettingSectionView(
-                            items: settingsData[sectionIndex],
-                            onItemTapped: { title in
-                                onTapped(title)
-                            }
-                        )
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Settings")
+                        .font(.system(size: 32, weight: .semibold))
+                        .foregroundColor(.neutral1)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 10)
+                    
+                    VStack(spacing: 16) {
+                        PremiumMembershipView()
+                        ForEach(0..<settingsData.count, id: \.self) { sectionIndex in
+                            SettingSectionView(
+                                items: settingsData[sectionIndex],
+                                onItemTapped: { title in
+                                    onTapped(title)
+                                }
+                            )
+                        }
                     }
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
                 }
-                .padding(.top, 20)
-                .padding(.bottom, 20)
+            }
+            .background(Color.background)
+            
+            .navigationDestination(isPresented: $goToProfile) {
+                ProfileView(userProfile: userProfile, goToRegister: $goToRegister)
+            }
+            .navigationDestination(isPresented: $goToRegister) {
+                RegisterView(userProfile: userProfile)
             }
         }
-        .background(Color.background)
         .navigationBarHidden(true)
-        .sheet(isPresented: $showingProfile) {
-            ProfileView(userProfile: userProfile, showingRegister: $showingRegister)
-        }
-        .sheet(isPresented: $showingRegister) {
-            RegisterView(userProfile: userProfile)
-        }
     }
     
     private func onTapped(_ title: String) {
         switch title {
         case "Profile":
             if userProfile.hasCompleteProfile {
-                showingProfile = true
+                goToProfile = true
             } else {
-                showingRegister = true
+                goToRegister = true
             }
         default:
             break
@@ -85,10 +88,7 @@ struct SettingsView: View {
 
 struct PremiumMembershipView: View {
     var body: some View {
-        Button(action: {
-            print("Premium membership tapped")
-        }) {
-            
+        Button(action: {}) {
             Image("premiumHeader")
                 .resizable()
                 .padding(.horizontal, 16)

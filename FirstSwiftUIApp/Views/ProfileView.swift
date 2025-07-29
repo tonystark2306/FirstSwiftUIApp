@@ -8,7 +8,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var userProfile: UserProfileModel
-    @Binding var showingRegister: Bool
+    @Binding var goToRegister: Bool
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -67,10 +67,7 @@ struct ProfileView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        dismiss()
-                        showingRegister = true
-                    }) {
+                    NavigationLink(destination: RegisterView(userProfile: userProfile)) {
                         Text("Edit")
                             .foregroundColor(Color("primary2"))
                             .font(.system(size: 16, weight: .semibold))
@@ -88,8 +85,13 @@ struct ProfileView: View {
                           
                     }
                 }
+                
             }
+            
         }
+        .navigationBarHidden(true)
+        .toolbar(.hidden, for: .tabBar)
+        
     }
 }
 
@@ -114,5 +116,5 @@ struct StatView: View {
 }
  
 #Preview {
-    ProfileView(userProfile: UserProfileModel(), showingRegister: .constant(false))
+    ProfileView(userProfile: UserProfileModel(), goToRegister: .constant(false))
 }

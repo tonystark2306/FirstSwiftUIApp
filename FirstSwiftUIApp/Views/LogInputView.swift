@@ -29,7 +29,7 @@ struct LogInputView: View {
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.neutral15)
                             TextField("Enter your pulse", text: $pulse)
-                                .textFieldStyle(CustomTextFieldStyle())
+                                .textFieldStyle(CustomTF())
                                 .keyboardType(.numberPad)
                         }
                         
@@ -38,7 +38,7 @@ struct LogInputView: View {
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.neutral15)
                             TextField("Enter your HRV", text: $hrv)
-                                .textFieldStyle(CustomTextFieldStyle())
+                                .textFieldStyle(CustomTF())
                                 .keyboardType(.numberPad)
                         }
                     }

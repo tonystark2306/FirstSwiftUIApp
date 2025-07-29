@@ -20,7 +20,7 @@ struct RegisterView: View {
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.neutral15)
                         TextField("Enter first name...", text: $userProfile.firstName)
-                            .textFieldStyle(CustomTextFieldStyle())
+                            .textFieldStyle(CustomTF())
                     }
                     
                     VStack(alignment: .leading, spacing: 12) {
@@ -28,7 +28,7 @@ struct RegisterView: View {
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.neutral15)
                         TextField("Enter last name...", text: $userProfile.lastName)
-                            .textFieldStyle(CustomTextFieldStyle())
+                            .textFieldStyle(CustomTF())
                     }
                 }
                 .padding(.top, 16)
@@ -58,7 +58,7 @@ struct RegisterView: View {
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.neutral15)
                         TextField("Enter weight...", text: $userProfile.weight)
-                            .textFieldStyle(CustomTextFieldStyle())
+                            .textFieldStyle(CustomTF())
                             .keyboardType(.decimalPad)
                     }
                     
@@ -67,7 +67,7 @@ struct RegisterView: View {
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.neutral15)
                         TextField("Enter height...", text: $userProfile.height)
-                            .textFieldStyle(CustomTextFieldStyle())
+                            .textFieldStyle(CustomTF())
                             .keyboardType(.decimalPad)
                     }
                 }
@@ -94,6 +94,7 @@ struct RegisterView: View {
             .background(Color.background)
             .navigationTitle("Information")
             .navigationBarTitleDisplayMode(.inline)
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -107,10 +108,12 @@ struct RegisterView: View {
                 }
             }
         }
+        .navigationBarHidden(true)
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 
-struct CustomTextFieldStyle: TextFieldStyle {
+struct CustomTF: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(.leading, 12)

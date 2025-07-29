@@ -34,9 +34,9 @@ struct HealthLog: Identifiable {
 }
 
 class HealthLogManager: ObservableObject {
-    @Published var entries: [HealthLog] = []
+    @Published var logData: [HealthLog] = []
     
     func add(pulse: Int, hrv: Int) {
-        entries.insert(HealthLog(pulse: pulse, hrv: hrv), at: 0)
+        logData.insert(HealthLog(pulse: pulse, hrv: hrv), at: 0)
     }
 }
